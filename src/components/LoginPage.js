@@ -255,6 +255,7 @@ const LoginPage = ({ theme }) => {
                   >
                     <MenuItem value="de">Deutsch</MenuItem>
                     <MenuItem value="en">English</MenuItem>
+                    <MenuItem value="es">Español inclusivo</MenuItem>
                   </Select>
                 </div>
                 <FormDataConsumer>

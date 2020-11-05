@@ -12,11 +12,13 @@ import { ImportFeature } from "./components/ImportFeature";
 import { Route } from "react-router-dom";
 import germanMessages from "./i18n/de";
 import englishMessages from "./i18n/en";
+import spanishMessages from "./i18n/es";
 
 // TODO: Can we use lazy loading together with browser locale?
 const messages = {
   de: germanMessages,
   en: englishMessages,
+  es: spanishMessages,
 };
 const i18nProvider = polyglotI18nProvider(
   locale => (messages[locale] ? messages[locale] : messages.en),

@@ -22,9 +22,11 @@
     "prettier": "^2.0.0"
   },
   "dependencies": {
+    "new": "^0.1.1",
+    "papaparse": "^5.2.0",
     "prop-types": "^15.7.2",
     "ra-language-german": "^2.1.2",
-    "papaparse": "^5.2.0",
+    "ra-language-spanish": "^1.0.0",
     "react": "^16.13.1",
     "react-admin": "^3.7.0",
     "react-dom": "^16.13.1",

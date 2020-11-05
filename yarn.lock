@@ -7632,6 +7632,11 @@ neo-async@^2.5.0, neo-async@^2.6.1:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
+new@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/new/-/new-0.1.1.tgz#e378203be64b404a6a95aa809a35ea98f3907972"
+  integrity sha1-43ggO+ZLQEpqlaqAmjXqmPOQeXI=
+
 next-tick@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
@@ -8067,6 +8072,11 @@ pako@~1.0.5:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.11.tgz#6c9599d340d54dfd3946380252a35705a6b992bf"
   integrity sha512-4hLB8Py4zZce5s4yd9XzopqwVv/yGNhV1Bl8NTmCq1763HeK2+EwVTv+leGeL13Dnh2wfbqowVPXCIO0z4taYw==
+
+papaparse@^5.2.0:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/papaparse/-/papaparse-5.3.0.tgz#ab1702feb96e79ab4309652f36db9536563ad05a"
+  integrity sha512-Lb7jN/4bTpiuGPrYy4tkKoUS8sTki8zacB5ke1p5zolhcSE4TlWgrlsxjrDTbG/dFVh07ck7X36hUf/b5V68pg==
 
 parallel-transform@^1.1.0:
   version "1.2.0"
@@ -9302,6 +9312,11 @@ ra-language-german@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/ra-language-german/-/ra-language-german-2.1.2.tgz#d183093d470ab499ece91838cb67222db88f2e4f"
   integrity sha512-N+BaBP0z98ujaKVlAMIKTfWHgmTiWD8sPQrU5vA3+b5zY9U0mMB4VjvU8sQQPR7rZE0gsRgS/X4V6ycDtNL6iQ==
+
+ra-language-spanish@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/ra-language-spanish/-/ra-language-spanish-1.0.0.tgz#7b0575d07a5434bea219b7f3c1e7667e0c3b8dff"
+  integrity sha512-hdsW0DtE9foDVMkct3kyLdm8sKgwFFKeqBJ9bxOz3T7qtPAXljxOIgSmvSEjx3bKS0xfUkHX8kt3wvB+Q7fyIg==
 
 ra-ui-materialui@^3.8.2:
   version "3.8.2"
