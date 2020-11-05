@@ -5,7 +5,7 @@ export default {
   synapseadmin: {
     auth: {
       base_url: "Homeserver URL",
-      welcome: "Bienvenido a Synapse-admin",
+      welcome: "ENIA@Virtual",
       username_error: "Please enter fully qualified user ID: '@user:domain'",
       protocol_error: "URL has to start with 'http://' or 'https://'",
       url_error: "Not a valid Matrix server URL",
@@ -22,7 +22,7 @@ export default {
         permission: "Permisos",
       },
       delete: {
-        title: "Borrar conversaci&oacuye;n",
+        title: "Borrar conversaci&oacute;n",
         message: "Esta seguro de querer borrar la conversaci&oacuye;n? Esta accion no podra volverse atras. Todos los mensajes y archivos multimedia compartidos en la conversaci&oacuye;n seran eliminados de manera permanente!",
       },
     },
@@ -128,25 +128,25 @@ export default {
         last_seen_ip: "IP",
       },
       helper: {
-        deactivate: "Deactivated users cannot be reactivated",
+        deactivate: "Los usuarios desactivados no podr&aacute;n ser reactivados",
         erase: "Mark the user as GDPR-erased",
       },
       action: {
-        erase: "Borrar informaci&oacuye;n del usuario",
+        erase: "Borrar informaci&oacute;n del usuario",
       },
     },
     rooms: {
-      name: "Conversaci&oacuye;n |||| Conversaciones",
+      name: "Conversaci&oacute;n |||| Conversaciones",
       fields: {
-        room_id: "Conversasici&oacuye;n-ID",
+        room_id: "Conversaci&oacute;n-ID",
         name: "Nombre",
         canonical_alias: "Alias",
-        joined_members: "Miembres",
+        joined_members: "Miembros",
         joined_local_members: "Miembros locales",
         state_events: "State events",
         version: "Version",
         is_encrypted: "Encriptado",
-        encryption: "Encriptación",
+        encryption: "Encriptaci&oacute;n",
         federatable: "Federable",
         public: "Publico",
         creator: "Creador",
@@ -156,9 +156,9 @@ export default {
       },
       enums: {
         join_rules: {
-          public: "Publico",
+          public: "P&uacute;blico",
           knock: "Golpe",
-          invite: "Invitaci&oacuye;n",
+          invite: "Invitaci&oacute;n",
           private: "Privado",
         },
         guest_access: {
