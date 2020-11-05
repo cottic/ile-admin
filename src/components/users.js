@@ -2,6 +2,7 @@ import React, { cloneElement, Fragment } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import PersonPinIcon from "@material-ui/icons/PersonPin";
 import ContactMailIcon from "@material-ui/icons/ContactMail";
+import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import DevicesIcon from "@material-ui/icons/Devices";
 import GetAppIcon from "@material-ui/icons/GetApp";
 import SettingsInputComponentIcon from "@material-ui/icons/SettingsInputComponent";
@@ -25,6 +26,7 @@ import {
   PasswordInput,
   TextField,
   TextInput,
+  NumberInput,
   ReferenceField,
   ReferenceManyField,
   SearchInput,
@@ -33,6 +35,7 @@ import {
   DeleteButton,
   SaveButton,
   regex,
+  required,
   useRedirect,
   useTranslate,
   Pagination,
@@ -260,6 +263,25 @@ export const UserCreate = props => (
           <TextInput source="address" />
         </SimpleFormIterator>
       </ArrayInput>
+      <ArrayInput source="workcalendars">
+        <SimpleFormIterator>
+          <SelectInput
+            source="day"
+            choices={[
+              { id: "lun", name: "resources.users.lun" },
+              { id: "mar", name: "resources.users.mar" },
+              { id: "mie", name: "resources.users.mie" },
+              { id: "jue", name: "resources.users.jue" },
+              { id: "vie", name: "resources.users.vie" },
+              { id: "sab", name: "resources.users.sab" },
+              { id: "dom", name: "resources.users.dom" },
+            ]}
+            validate={[required()]}
+          />
+          <NumberInput min="7" max="18" mobile="true" validate={[required()]} placeholder="7" source="time_start" />
+          <NumberInput min="8" max="19" mobile="true" validate={[required()]} placeholder="19" source="time_end"/>
+        </SimpleFormIterator>
+      </ArrayInput>
     </SimpleForm>
   </Create>
 );
@@ -327,6 +349,31 @@ export const UserEdit = props => {
                 ]}
               />
               <TextInput source="address" />
+            </SimpleFormIterator>
+          </ArrayInput>
+        </FormTab>
+        <FormTab
+          label="resources.users.workcalendar"
+          icon={<AccessTimeIcon />}
+          path="workcalendar"
+        >
+          <ArrayInput source="workcalendars">
+            <SimpleFormIterator>
+              <SelectInput
+                source="day"
+                choices={[
+                  { id: "lun", name: "resources.users.lun" },
+                  { id: "mar", name: "resources.users.mar" },
+                  { id: "mie", name: "resources.users.mie" },
+                  { id: "jue", name: "resources.users.jue" },
+                  { id: "vie", name: "resources.users.vie" },
+                  { id: "sab", name: "resources.users.sab" },
+                  { id: "dom", name: "resources.users.dom" },
+                ]}
+                validate={[required()]}
+              />
+              <NumberInput min="7" max="18" mobile="true" validate={[required()]} placeholder="7" source="time_start" />
+              <NumberInput min="8" max="19" mobile="true" validate={[required()]} placeholder="19" source="time_end"/>
             </SimpleFormIterator>
           </ArrayInput>
         </FormTab>
