@@ -13,7 +13,6 @@ import {
 } from "react-admin";
 import { Form, useForm } from "react-final-form";
 import {
-  Avatar,
   Button,
   Card,
   CardActions,
@@ -23,7 +22,7 @@ import {
   TextField,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import LockIcon from "@material-ui/icons/Lock";
+/* import LockIcon from "@material-ui/icons/Lock"; */
 
 const useStyles = makeStyles(theme => ({
   main: {
@@ -236,9 +235,7 @@ const LoginPage = ({ theme }) => {
           <div className={classes.main}>
             <Card className={classes.card}>
               <div className={classes.avatar}>
-                <Avatar className={classes.icon}>
-                  <LockIcon />
-                </Avatar>
+                <img src="https://plan-enia.web.app/icons/Icon-192.png" alt="Enia" />
               </div>
               <div className={classes.hint}>
                 {translate("synapseadmin.auth.welcome")}
@@ -250,6 +247,7 @@ const LoginPage = ({ theme }) => {
                     onChange={e => {
                       setLocale(e.target.value);
                     }}
+                    initialValue={"es"}
                     fullWidth
                     disabled={loading}
                   >
