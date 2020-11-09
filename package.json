@@ -1,13 +1,13 @@
 {
-  "name": "synapse-admin",
+  "name": "ENIA-Virtual-Admin",
   "version": "0.2.1",
-  "description": "Admin GUI for the Matrix.org server Synapse",
-  "author": "Awesome Technologies Innovationslabor GmbH",
+  "description": "Admin GUI del Plan ENIA",
+  "author": "Cottic Ltda",
   "license": "Apache-2.0",
   "homepage": ".",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Awesome-Technologies/synapse-admin"
+    "url": "https://github.com/cottic/synapse-admin"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.1.1",
