@@ -231,7 +231,7 @@ const FilePicker = props => {
     // (so that the user doesn't have to filter out successful
     // records manually when fixing stuff in the CSV)
     setSkippedRecords(unparseCsv(results.skippedRecords));
-    if (LOGGING) console.log("Skipped records:");
+    if (LOGGING) console.log("Registros ignorados:");
     if (LOGGING) console.log(skippedRecords);
   };
 
@@ -327,7 +327,7 @@ const FilePicker = props => {
         const submitRecord = recordData => {
           return dataProvider.getOne("users", { id: recordData.id }).then(
             async alreadyExists => {
-              if (LOGGING) console.log("already existed");
+              if (LOGGING) console.log("ya existe");
 
               if (useridMode === "update" || conflictMode === "skip") {
                 skippedRecords.push(recordData);
@@ -344,7 +344,7 @@ const FilePicker = props => {
                 });
                 retries++;
                 if (retries > 512) {
-                  console.warn("retry loop got stuck? pathological situation?");
+                  console.warn("volver a intentarlo?");
                   skippedRecords.push(recordData);
                 } else {
                   await submitRecord(newRecordData);
@@ -354,7 +354,7 @@ const FilePicker = props => {
             async okToSubmit => {
               if (LOGGING)
                 console.log(
-                  "OK to create record " +
+                  "LISTO. para crear el registro " +
                     recordData.id +
                     " (" +
                     recordData.displayname +
@@ -569,7 +569,7 @@ const FilePicker = props => {
       <CardHeader title={translate("import_users.cards.upload.header")} />
       <CardContent>
         {translate("import_users.cards.upload.explanation")}
-        <a href="/data/example.csv">example.csv</a>
+        <a href="/data/ejemplo.csv">ejemplo.csv</a>
         <br />
         <br />
         <input
