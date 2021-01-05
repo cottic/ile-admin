@@ -9,6 +9,7 @@ export default {
       username_error: "Please enter fully qualified user ID: '@user:domain'",
       protocol_error: "URL has to start with 'http://' or 'https://'",
       url_error: "Not a valid Matrix server URL",
+      server_version: "Version",
     },
     users: {
       invalid_user_id:
@@ -180,6 +181,7 @@ export default {
         day: "Dia",
         state: "Provincia",
         departament: "Departamento",
+        school: "Escuela, Centro de Salud",
         time_start: "Hora de inicio",
         time_end: "Hora de finalizacion",
         creation_ts_ms: "Fecha de alta",

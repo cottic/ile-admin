@@ -247,7 +247,6 @@ const LoginPage = ({ theme }) => {
                     onChange={e => {
                       setLocale(e.target.value);
                     }}
-                    initialValue={"es"}
                     fullWidth
                     disabled={loading}
                   >

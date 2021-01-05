@@ -18,7 +18,7 @@ const mxcUrlToHttp = mxcUrl => {
   const homeserver = localStorage.getItem("base_url");
   const re = /^mxc:\/\/([^/]+)\/(\w+)/;
   var ret = re.exec(mxcUrl);
-  console.log("mxcClient " + ret);
+  /* console.log("mxcClient " + ret); */
   if (ret == null) return null;
   const serverName = ret[1];
   const mediaId = ret[2];
@@ -71,6 +71,14 @@ const resourceMap = {
       body: { block: false },
       method: "POST",
     }),
+  },
+  locationon: {
+    path: "https://proyecto.codigoi.com.ar/appenia/enia-api-tableros/users/?user",
+    map: l => ({
+      ...l,
+      id: l.locationon_id,
+    }),
+    data: "locationon",
   },
   devices: {
     map: d => ({
@@ -172,6 +180,17 @@ const dataProvider = {
 
     const res = resourceMap[resource];
 
+    console.log(params);
+    if (resource === 'users') {
+      console.log("HttpClient https://proyecto.codigoi.com.ar/appenia/enia-api-tableros/users/?user");
+/*       return  fetchUtils.fetchJson(`https://proyecto.codigoi.com.ar/appenia/enia-api-tableros/users/?user=${params.data.id}`, {
+        method: "PUT",
+        body: JSON.stringify(params.data, filterNullValues),
+      }).then(({ json }) => ({
+        data: res.map(json),
+      })); */
+    }
+
     const endpoint_url = homeserver + res.path;
     return jsonClient(`${endpoint_url}/${params.id}`).then(({ json }) => ({
       data: res.map(json),
@@ -184,13 +203,27 @@ const dataProvider = {
     if (!homeserver || !(resource in resourceMap)) return Promise.reject();
 
     const res = resourceMap[resource];
+ 
+    if (resource === 'locationon') {
 
-    const endpoint_url = homeserver + res.path;
-    return Promise.all(
-      params.ids.map(id => jsonClient(`${endpoint_url}/${id}`))
-    ).then(responses => ({
-      data: responses.map(({ json }) => res.map(json)),
-    }));
+      const endpoint_url = res.path;
+      console.log("HttpClient " + endpoint_url);
+      return Promise.all(
+          params.ids.map(id => fetchUtils.fetchJson(`${endpoint_url}=${id}`))
+          ).then(responses => ({
+              data: responses.map(({ json }) => res.map(json)),
+      }))
+
+    } else {
+
+      const endpoint_url = homeserver + res.path;
+      return Promise.all(
+        params.ids.map(id => jsonClient(`${endpoint_url}/${id}`))
+      ).then(responses => ({
+        data: responses.map(({ json }) => res.map(json)),
+      }))
+    }
+
   },
 
   getManyReference: (resource, params) => {
@@ -215,6 +248,17 @@ const dataProvider = {
     if (!homeserver || !(resource in resourceMap)) return Promise.reject();
 
     const res = resourceMap[resource];
+
+    console.log(params);
+    if (resource === 'users') {
+      console.log("HttpClient https://proyecto.codigoi.com.ar/appenia/enia-api-tableros/users/?user");
+/*       return  fetchUtils.fetchJson(`https://proyecto.codigoi.com.ar/appenia/enia-api-tableros/users/?user=${params.data.id}`, {
+        method: "PUT",
+        body: JSON.stringify(params.data, filterNullValues),
+      }).then(({ json }) => ({
+        data: res.map(json),
+      })); */
+    }
 
     const endpoint_url = homeserver + res.path;
     return jsonClient(`${endpoint_url}/${params.data.id}`, {
@@ -253,6 +297,18 @@ const dataProvider = {
 
     const create = res["create"](params.data);
     const endpoint_url = homeserver + create.endpoint;
+
+    console.log(params);
+    if (resource === 'users') {
+      console.log("HttpClient https://proyecto.codigoi.com.ar/appenia/enia-api-tableros/users/?user");
+      fetchUtils.fetchJson(`https://proyecto.codigoi.com.ar/appenia/enia-api-tableros/users/?user=${params.data.id}`, {
+        method: "PUT",
+        body: JSON.stringify(params.data, filterNullValues),
+      }).then(({ json }) => ({
+        data: res.map(json),
+      })); 
+    }
+
     return jsonClient(endpoint_url, {
       method: create.method,
       body: JSON.stringify(create.body, filterNullValues),

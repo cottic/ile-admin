@@ -306,6 +306,8 @@ export const UserCreate = props => (
 		]}
 		validate={[required()]}
 	  />
+
+    <TextInput source="school" validate={[required()]} />
 		{/*
 	  <SelectInput
 		source="state"
@@ -419,48 +421,51 @@ export const UserEdit = props => {
           icon={<LocationOnIcon />}
           path="locationon"
         >
-          <SelectInput
-            source="departament"
-            choices={[
-		      { id: "depto_tuc_capital", name: "resources.users.depto_tuc_capital"},
-			  { id: "depto_tuc_tafiviejo", name: "resources.users.depto_tuc_tafiviejo"},
-			  { id: "depto_tuc_cruzalta", name: "resources.users.depto_tuc_cruzalta"},
-			  { id: "depto_rio_capital", name: "resources.users.depto_rio_capital"},
-			  { id: "depto_rio_chilecito", name: "resources.users.depto_rio_chilecito"},
-			  { id: "depto_rio_rosarioverapenialoza", name: "resources.users.depto_rio_rosarioverapenialoza"},
-			  { id: "depto_cat_capital", name: "resources.users.depto_cat_capital"},
-			  { id: "depto_cat_belen", name: "resources.users.depto_cat_belen"},
-			  { id: "depto_cat_valleviejo", name: "resources.users.depto_cat_valleviejo"},
-			  { id: "depto_ent_parana", name: "resources.users.depto_ent_parana"},
-			  { id: "depto_ent_concordia", name: "resources.users.depto_ent_concordia"},
-			  { id: "depto_ent_gualeguaychu", name: "resources.users.depto_ent_gualeguaychu"},
-			  { id: "depto_juj_manuelbelgrano", name: "resources.users.depto_juj_manuelbelgrano"},
-			  { id: "depto_juj_sanpedro", name: "resources.users.depto_juj_sanpedro"},
-			  { id: "depto_sal_capital", name: "resources.users.depto_sal_capital"},
-			  { id: "depto_sal_oran", name: "resources.users.depto_sal_oran"},
-			  { id: "depto_sgt_capital", name: "resources.users.depto_sgt_capital"},
-			  { id: "depto_sgt_banda", name: "resources.users.depto_sgt_banda"},
-			  { id: "depto_sgt_riohondo", name: "resources.users.depto_sgt_riohondo"},
-			  { id: "depto_sgt_robles", name: "resources.users.depto_sgt_robles"},
-			  { id: "depto_mis_capital", name: "resources.users.depto_mis_capital"},
-			  { id: "depto_mis_guariani", name: "resources.users.depto_mis_guariani"},
-			  { id: "depto_mis_obera", name: "resources.users.depto_mis_obera"},
-			  { id: "depto_cor_capital", name: "resources.users.depto_cor_capital"},
-			  { id: "depto_cor_goya", name: "resources.users.depto_cor_goya"},
-			  { id: "depto_cha_sanfernando", name: "resources.users.depto_cha_sanfernando"},
-			  { id: "depto_cha_gralguemes", name: "resources.users.depto_cha_gralguemes"},
-			  { id: "depto_cha_chacabuco", name: "resources.users.depto_cha_chacabuco"},
-			  { id: "depto_for_formosa", name: "resources.users.depto_for_formosa"},
-			  { id: "depto_for_pilcomayo", name: "resources.users.depto_for_pilcomayo"},
-			  { id: "depto_bue_quilmes", name: "resources.users.depto_bue_quilmes"},
-			  { id: "depto_bue_lanus", name: "resources.users.depto_bue_lanus"},
-			  { id: "depto_bue_moron", name: "resources.users.depto_bue_moron"},
-			  { id: "depto_bue_altebrown", name: "resources.users.depto_bue_altebrown"},
-			  { id: "depto_bue_sanmartin", name: "resources.users.depto_bue_sanmartin"},
-			  { id: "depto_bue_sanisidro", name: "resources.users.depto_bue_sanisidro"},
-            ]}
-            validate={[required()]}
-          />
+
+              <SelectInput
+                source="departament"
+                choices={[
+                  { id: "depto_tuc_capital", name: "resources.users.depto_tuc_capital"},
+                  { id: "depto_tuc_tafiviejo", name: "resources.users.depto_tuc_tafiviejo"},
+                  { id: "depto_tuc_cruzalta", name: "resources.users.depto_tuc_cruzalta"},
+                  { id: "depto_rio_capital", name: "resources.users.depto_rio_capital"},
+                  { id: "depto_rio_chilecito", name: "resources.users.depto_rio_chilecito"},
+                  { id: "depto_rio_rosarioverapenialoza", name: "resources.users.depto_rio_rosarioverapenialoza"},
+                  { id: "depto_cat_capital", name: "resources.users.depto_cat_capital"},
+                  { id: "depto_cat_belen", name: "resources.users.depto_cat_belen"},
+                  { id: "depto_cat_valleviejo", name: "resources.users.depto_cat_valleviejo"},
+                  { id: "depto_ent_parana", name: "resources.users.depto_ent_parana"},
+                  { id: "depto_ent_concordia", name: "resources.users.depto_ent_concordia"},
+                  { id: "depto_ent_gualeguaychu", name: "resources.users.depto_ent_gualeguaychu"},
+                  { id: "depto_juj_manuelbelgrano", name: "resources.users.depto_juj_manuelbelgrano"},
+                  { id: "depto_juj_sanpedro", name: "resources.users.depto_juj_sanpedro"},
+                  { id: "depto_sal_capital", name: "resources.users.depto_sal_capital"},
+                  { id: "depto_sal_oran", name: "resources.users.depto_sal_oran"},
+                  { id: "depto_sgt_capital", name: "resources.users.depto_sgt_capital"},
+                  { id: "depto_sgt_banda", name: "resources.users.depto_sgt_banda"},
+                  { id: "depto_sgt_riohondo", name: "resources.users.depto_sgt_riohondo"},
+                  { id: "depto_sgt_robles", name: "resources.users.depto_sgt_robles"},
+                  { id: "depto_mis_capital", name: "resources.users.depto_mis_capital"},
+                  { id: "depto_mis_guariani", name: "resources.users.depto_mis_guariani"},
+                  { id: "depto_mis_obera", name: "resources.users.depto_mis_obera"},
+                  { id: "depto_cor_capital", name: "resources.users.depto_cor_capital"},
+                  { id: "depto_cor_goya", name: "resources.users.depto_cor_goya"},
+                  { id: "depto_cha_sanfernando", name: "resources.users.depto_cha_sanfernando"},
+                  { id: "depto_cha_gralguemes", name: "resources.users.depto_cha_gralguemes"},
+                  { id: "depto_cha_chacabuco", name: "resources.users.depto_cha_chacabuco"},
+                  { id: "depto_for_formosa", name: "resources.users.depto_for_formosa"},
+                  { id: "depto_for_pilcomayo", name: "resources.users.depto_for_pilcomayo"},
+                  { id: "depto_bue_quilmes", name: "resources.users.depto_bue_quilmes"},
+                  { id: "depto_bue_lanus", name: "resources.users.depto_bue_lanus"},
+                  { id: "depto_bue_moron", name: "resources.users.depto_bue_moron"},
+                  { id: "depto_bue_altebrown", name: "resources.users.depto_bue_altebrown"},
+                  { id: "depto_bue_sanmartin", name: "resources.users.depto_bue_sanmartin"},
+                  { id: "depto_bue_sanisidro", name: "resources.users.depto_bue_sanisidro"},
+                ]}
+                validate={[required()]}
+              />
+
+              <TextInput source="school" validate={[required()]} />
 			{/*
           <SelectInput
             source="state"
@@ -480,6 +485,7 @@ export const UserEdit = props => {
             ]}
             validate={[required()]}
           /> */}
+
         </FormTab>
         <FormTab
           label="resources.users.workcalendar"

@@ -45,7 +45,7 @@ const authProvider = {
   // called when the user navigates to a new location, to check for authentication
   checkAuth: () => {
     const access_token = localStorage.getItem("access_token");
-    console.log("checkAuth " + access_token);
+    /* console.log("checkAuth " + access_token); */
     return typeof access_token == "string"
       ? Promise.resolve()
       : Promise.reject();
