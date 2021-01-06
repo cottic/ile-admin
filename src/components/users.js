@@ -297,7 +297,7 @@ export const UserCreate = props => (
 		  { id: "depto_cha_chacabuco", name: "resources.users.depto_cha_chacabuco"},
 		  { id: "depto_for_formosa", name: "resources.users.depto_for_formosa"},
 		  { id: "depto_for_pilcomayo", name: "resources.users.depto_for_pilcomayo"},
-		  { id: "depto_bue_quilmes", name: "resources.users.depto_bue_quilmes"},
+		  { id: "bue-quilmes", name: "resources.users.depto_bue_quilmes"},
 		  { id: "depto_bue_lanus", name: "resources.users.depto_bue_lanus"},
 		  { id: "depto_bue_moron", name: "resources.users.depto_bue_moron"},
 		  { id: "depto_bue_altebrown", name: "resources.users.depto_bue_altebrown"},
@@ -332,13 +332,13 @@ export const UserCreate = props => (
           <SelectInput
             source="day"
             choices={[
-              { id: "lun", name: "resources.users.lun" },
-              { id: "mar", name: "resources.users.mar" },
-              { id: "mie", name: "resources.users.mie" },
-              { id: "jue", name: "resources.users.jue" },
-              { id: "vie", name: "resources.users.vie" },
-              { id: "sab", name: "resources.users.sab" },
-              { id: "dom", name: "resources.users.dom" },
+              { id: "0", name: "resources.users.lun" },
+              { id: "1", name: "resources.users.mar" },
+              { id: "2", name: "resources.users.mie" },
+              { id: "3", name: "resources.users.jue" },
+              { id: "4", name: "resources.users.vie" },
+              { id: "5", name: "resources.users.sab" },
+              { id: "6", name: "resources.users.dom" },
             ]}
             validate={[required()]}
           />
@@ -455,7 +455,7 @@ export const UserEdit = props => {
                   { id: "depto_cha_chacabuco", name: "resources.users.depto_cha_chacabuco"},
                   { id: "depto_for_formosa", name: "resources.users.depto_for_formosa"},
                   { id: "depto_for_pilcomayo", name: "resources.users.depto_for_pilcomayo"},
-                  { id: "depto_bue_quilmes", name: "resources.users.depto_bue_quilmes"},
+                  { id: "bue-quilmes", name: "resources.users.depto_bue_quilmes"},
                   { id: "depto_bue_lanus", name: "resources.users.depto_bue_lanus"},
                   { id: "depto_bue_moron", name: "resources.users.depto_bue_moron"},
                   { id: "depto_bue_altebrown", name: "resources.users.depto_bue_altebrown"},
@@ -497,13 +497,13 @@ export const UserEdit = props => {
               <SelectInput
                 source="day"
                 choices={[
-                  { id: "lun", name: "resources.users.lun" },
-                  { id: "mar", name: "resources.users.mar" },
-                  { id: "mie", name: "resources.users.mie" },
-                  { id: "jue", name: "resources.users.jue" },
-                  { id: "vie", name: "resources.users.vie" },
-                  { id: "sab", name: "resources.users.sab" },
-                  { id: "dom", name: "resources.users.dom" },
+                  { id: "0", name: "resources.users.lun" },
+                  { id: "1", name: "resources.users.mar" },
+                  { id: "2", name: "resources.users.mie" },
+                  { id: "3", name: "resources.users.jue" },
+                  { id: "4", name: "resources.users.vie" },
+                  { id: "5", name: "resources.users.sab" },
+                  { id: "6", name: "resources.users.dom" },
                 ]}
                 validate={[required()]}
               />

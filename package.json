@@ -33,7 +33,7 @@
     "react-scripts": "^3.4.1"
   },
   "scripts": {
-    "start": "REACT_APP_VERSION=$(git describe --tags) react-scripts start",
+    "start": "REACT_APP_VERSION=$(git describe --tags) react-scripts start --host 0.0.0.0",
     "build": "REACT_APP_VERSION=$(git describe --tags) react-scripts build",
     "fix:other": "yarn prettier --write",
     "fix:code": "yarn test:lint --fix",

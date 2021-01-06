@@ -14,6 +14,17 @@ const jsonClient = (url, options = {}) => {
   return fetchUtils.fetchJson(url, options);
 };
 
+const getEniaData = (resource, params) => {
+  console.log("getEniaData " + resource);
+ 
+    const res = resourceMap[resource]; 
+ 
+    console.log("HttpClient https://proyecto.codigoi.com.ar/appenia/enia-api-tableros/users/?user");
+    return fetchUtils.fetchJson(`https://proyecto.codigoi.com.ar/appenia/enia-api-tableros/users/?user=${params.id}`).then(({ json }) => ({
+      data: res.map(json),
+    }));; 
+  };
+
 const mxcUrlToHttp = mxcUrl => {
   const homeserver = localStorage.getItem("base_url");
   const re = /^mxc:\/\/([^/]+)\/(\w+)/;
@@ -76,7 +87,8 @@ const resourceMap = {
     path: "https://proyecto.codigoi.com.ar/appenia/enia-api-tableros/users/?user",
     map: l => ({
       ...l,
-      id: l.locationon_id,
+      departament: l.departament,
+      school: l.school,
     }),
     data: "locationon",
   },
@@ -173,22 +185,29 @@ const dataProvider = {
     }));
   },
 
-  getOne: (resource, params) => {
+
+   getOne: async (resource, params) => {
     console.log("getOne " + resource);
     const homeserver = localStorage.getItem("base_url");
     if (!homeserver || !(resource in resourceMap)) return Promise.reject();
 
     const res = resourceMap[resource];
-
     console.log(params);
     if (resource === 'users') {
-      console.log("HttpClient https://proyecto.codigoi.com.ar/appenia/enia-api-tableros/users/?user");
-/*       return  fetchUtils.fetchJson(`https://proyecto.codigoi.com.ar/appenia/enia-api-tableros/users/?user=${params.data.id}`, {
-        method: "PUT",
-        body: JSON.stringify(params.data, filterNullValues),
-      }).then(({ json }) => ({
-        data: res.map(json),
-      })); */
+      const eniaData = await getEniaData('locationon', params); 
+      /* console.log(eniaData); */
+
+      const endpoint_url = homeserver + res.path;
+      const userData = await jsonClient(`${endpoint_url}/${params.id}`).then(({ json }) => ({
+      data: res.map(json),
+    }));
+      /* console.log(userData); */
+      const data = {};
+      Object.keys(userData).forEach(key => data[key] = userData[key]);
+      Object.keys(eniaData['data']).forEach(key => data['data'][key] = eniaData['data'][key]);
+      
+      console.log(data);
+      return data;
     }
 
     const endpoint_url = homeserver + res.path;
