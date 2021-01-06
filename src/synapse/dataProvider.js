@@ -306,7 +306,7 @@ const dataProvider = {
     }));
   },
 
-  create: (resource, params) => {
+  create: async (resource, params) => {
     console.log("create " + resource);
     const homeserver = localStorage.getItem("base_url");
     if (!homeserver || !(resource in resourceMap)) return Promise.reject();
@@ -316,16 +316,37 @@ const dataProvider = {
 
     const create = res["create"](params.data);
     const endpoint_url = homeserver + create.endpoint;
+    console.log(create);
 
     console.log(params);
     if (resource === 'users') {
-      console.log("HttpClient https://proyecto.codigoi.com.ar/appenia/enia-api-tableros/users/?user");
-      fetchUtils.fetchJson(`https://proyecto.codigoi.com.ar/appenia/enia-api-tableros/users/?user=${params.data.id}`, {
-        method: "PUT",
-        body: JSON.stringify(params.data, filterNullValues),
+/*       const eniaData = await getEniaData('locationon', params); 
+      console.log(eniaData);
+
+      ?user=${params.data.id
+      */
+      const resloc = resourceMap['locationon']; 
+      const eniaData = await fetchUtils.fetchJson(`https://proyecto.codigoi.com.ar/appenia/enia-api-tableros/users/index.php`, {
+        method: create.method,
+        body: JSON.stringify(create.body, filterNullValues),
+      }).then(({ json }) => ({
+        data: resloc.map(json),
+      }));
+
+
+      const userData = await jsonClient(endpoint_url, {
+        method: create.method,
+        body: JSON.stringify(create.body, filterNullValues),
       }).then(({ json }) => ({
         data: res.map(json),
-      })); 
+      }));
+      console.log(userData);
+      const data = {};
+      Object.keys(userData).forEach(key => data[key] = userData[key]);
+      Object.keys(eniaData['data']).forEach(key => data['data'][key] = eniaData['data'][key]);
+    
+      console.log(data);
+      return data;
     }
 
     return jsonClient(endpoint_url, {
