@@ -261,25 +261,39 @@ const dataProvider = {
     }));
   },
 
-  update: (resource, params) => {
+  update: async (resource, params) => {
     console.log("update " + resource);
     const homeserver = localStorage.getItem("base_url");
     if (!homeserver || !(resource in resourceMap)) return Promise.reject();
 
     const res = resourceMap[resource];
+    const endpoint_url = homeserver + res.path;
 
     console.log(params);
     if (resource === 'users') {
-      console.log("HttpClient https://proyecto.codigoi.com.ar/appenia/enia-api-tableros/users/?user");
-/*       return  fetchUtils.fetchJson(`https://proyecto.codigoi.com.ar/appenia/enia-api-tableros/users/?user=${params.data.id}`, {
+      const resloc = resourceMap['locationon']; 
+      const eniaData = await fetchUtils.fetchJson(`https://proyecto.codigoi.com.ar/appenia/enia-api-tableros/users/index.php`, {
+        method: "PUT",
+        body: JSON.stringify(params.data, filterNullValues),
+      }).then(({ json }) => ({
+        data: resloc.map(json),
+      }));
+
+      const userData = await jsonClient(`${endpoint_url}/${params.data.id}`, {
         method: "PUT",
         body: JSON.stringify(params.data, filterNullValues),
       }).then(({ json }) => ({
         data: res.map(json),
-      })); */
+      }));
+      console.log(userData);
+      const data = {};
+      Object.keys(userData).forEach(key => data[key] = userData[key]);
+      Object.keys(eniaData['data']).forEach(key => data['data'][key] = eniaData['data'][key]);
+    
+      console.log(data);
+      return data;
     }
 
-    const endpoint_url = homeserver + res.path;
     return jsonClient(`${endpoint_url}/${params.data.id}`, {
       method: "PUT",
       body: JSON.stringify(params.data, filterNullValues),
@@ -327,7 +341,7 @@ const dataProvider = {
       */
       const resloc = resourceMap['locationon']; 
       const eniaData = await fetchUtils.fetchJson(`https://proyecto.codigoi.com.ar/appenia/enia-api-tableros/users/index.php`, {
-        method: create.method,
+        method: "POST",
         body: JSON.stringify(create.body, filterNullValues),
       }).then(({ json }) => ({
         data: resloc.map(json),

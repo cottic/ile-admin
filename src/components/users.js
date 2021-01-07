@@ -304,10 +304,10 @@ export const UserCreate = props => (
 		  { id: "depto_bue_sanmartin", name: "resources.users.depto_bue_sanmartin"},
 		  { id: "depto_bue_sanisidro", name: "resources.users.depto_bue_sanisidro"},
 		]}
-		validate={[required()]}
+		
 	  />
 
-    <TextInput source="school" validate={[required()]} />
+    <TextInput source="school" />
 		{/*
 	  <SelectInput
 		source="state"
@@ -327,7 +327,7 @@ export const UserCreate = props => (
 		]}
 		validate={[required()]}
 	  /> */}
-      <ArrayInput source="workcalendars">
+      <ArrayInput source="workcalendars" label="resources.users.workcalendars"> 
         <SimpleFormIterator>
           <SelectInput
             source="day"
@@ -462,10 +462,10 @@ export const UserEdit = props => {
                   { id: "depto_bue_sanmartin", name: "resources.users.depto_bue_sanmartin"},
                   { id: "depto_bue_sanisidro", name: "resources.users.depto_bue_sanisidro"},
                 ]}
-                validate={[required()]}
+                
               />
 
-              <TextInput source="school" validate={[required()]} />
+              <TextInput source="school"  />
 			{/*
           <SelectInput
             source="state"
@@ -492,7 +492,7 @@ export const UserEdit = props => {
           icon={<AccessTimeIcon />}
           path="workcalendar"
         >
-          <ArrayInput source="workcalendars">
+          <ArrayInput source="workcalendars" label="resources.users.workcalendars">
             <SimpleFormIterator>
               <SelectInput
                 source="day"
