@@ -192,21 +192,18 @@ const dataProvider = {
     if (!homeserver || !(resource in resourceMap)) return Promise.reject();
 
     const res = resourceMap[resource];
-    console.log(params);
     if (resource === 'users') {
       const eniaData = await getEniaData('locationon', params); 
-      /* console.log(eniaData); */
+
 
       const endpoint_url = homeserver + res.path;
       const userData = await jsonClient(`${endpoint_url}/${params.id}`).then(({ json }) => ({
       data: res.map(json),
     }));
-      /* console.log(userData); */
       const data = {};
       Object.keys(userData).forEach(key => data[key] = userData[key]);
       Object.keys(eniaData['data']).forEach(key => data['data'][key] = eniaData['data'][key]);
       
-      console.log(data);
       return data;
     }
 
@@ -226,7 +223,7 @@ const dataProvider = {
     if (resource === 'locationon') {
 
       const endpoint_url = res.path;
-      console.log("HttpClient " + endpoint_url);
+      /* console.log("HttpClient " + endpoint_url); */
       return Promise.all(
           params.ids.map(id => fetchUtils.fetchJson(`${endpoint_url}=${id}`))
           ).then(responses => ({
@@ -269,7 +266,6 @@ const dataProvider = {
     const res = resourceMap[resource];
     const endpoint_url = homeserver + res.path;
 
-    console.log(params);
     if (resource === 'users') {
       const resloc = resourceMap['locationon']; 
       const eniaData = await fetchUtils.fetchJson(`https://proyecto.codigoi.com.ar/appenia/enia-api-tableros/users/index.php`, {
@@ -285,12 +281,10 @@ const dataProvider = {
       }).then(({ json }) => ({
         data: res.map(json),
       }));
-      console.log(userData);
       const data = {};
       Object.keys(userData).forEach(key => data[key] = userData[key]);
       Object.keys(eniaData['data']).forEach(key => data['data'][key] = eniaData['data'][key]);
     
-      console.log(data);
       return data;
     }
 
@@ -330,15 +324,9 @@ const dataProvider = {
 
     const create = res["create"](params.data);
     const endpoint_url = homeserver + create.endpoint;
-    console.log(create);
 
-    console.log(params);
     if (resource === 'users') {
-/*       const eniaData = await getEniaData('locationon', params); 
-      console.log(eniaData);
 
-      ?user=${params.data.id
-      */
       const resloc = resourceMap['locationon']; 
       const eniaData = await fetchUtils.fetchJson(`https://proyecto.codigoi.com.ar/appenia/enia-api-tableros/users/index.php`, {
         method: "POST",
@@ -347,19 +335,16 @@ const dataProvider = {
         data: resloc.map(json),
       }));
 
-
       const userData = await jsonClient(endpoint_url, {
         method: create.method,
         body: JSON.stringify(create.body, filterNullValues),
       }).then(({ json }) => ({
         data: res.map(json),
       }));
-      console.log(userData);
       const data = {};
       Object.keys(userData).forEach(key => data[key] = userData[key]);
       Object.keys(eniaData['data']).forEach(key => data['data'][key] = eniaData['data'][key]);
     
-      console.log(data);
       return data;
     }
 

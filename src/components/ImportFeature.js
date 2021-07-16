@@ -569,7 +569,7 @@ const FilePicker = props => {
       <CardHeader title={translate("import_users.cards.upload.header")} />
       <CardContent>
         {translate("import_users.cards.upload.explanation")}
-        <a href="/data/ejemplo.csv">ejemplo.csv</a>
+        <a href="/appenia/admin/data/ejemplo.csv">ejemplo.csv</a>
         <br />
         <br />
         <input
