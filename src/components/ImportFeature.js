@@ -44,6 +44,22 @@ const optionalFields = [
   "deactivated",
   "avatar_url",
   "password",
+  "escuela",
+  "lunes_inicio",
+  "lunes_fin",
+  "martes_inicio",
+  "martes_fin",
+  "miercoles_inicio",
+  "miercoles_fin",
+  "jueves_inicio",
+  "jueves_fin",
+  "viernes_inicio",
+  "viernes_fin",
+  "sabado_inicio",
+  "sabado_fin",
+  "domingo_inicio",
+  "domingo_fin"
+
 ].sort();
 
 function TranslatableOption({ value, text }) {
@@ -251,6 +267,7 @@ const FilePicker = props => {
     let skippedRecords = [];
     let erroredRecords = [];
     let succeededRecords = [];
+
     let changeStats = {
       toAdmin: 0,
       toGuest: 0,
@@ -291,6 +308,84 @@ const FilePicker = props => {
             delete overwriteData.password;
           }
         }
+
+        if (
+          entry.escuela !== ""
+        ) {
+          overwriteData.school = entry.escuela;
+        }
+        let workcalendars = [];
+
+        if (
+          entry.lunes_inicio !== "" ||
+          entry.lunes_fin !== "" ||
+          entry.martes_inicio !== "" ||
+          entry.martes_fin !== "" ||
+          entry.miercoles_inicio !== "" ||
+          entry.miercoles_fin !== "" ||
+          entry.jueves_inicio !== "" ||
+          entry.jueves_fin !== "" ||
+          entry.viernes_inicio !== "" ||
+          entry.viernes_fin !== "" ||
+          entry.sabado_inicio !== "" ||
+          entry.sabado_fin !== "" ||
+          entry.domingo_inicio !== "" ||
+          entry.domingo_fin !== ""
+        ) {
+          if (
+            entry.lunes_inicio !== "" &&
+            entry.lunes_fin !== ""
+          )
+          {
+            workcalendars.push({day: "0", time_start: entry.lunes_inicio, time_end: entry.lunes_fin});            
+          }
+          if (
+            entry.martes_inicio !== "" &&
+            entry.martes_fin !== ""
+          )
+          {
+            workcalendars.push({day: "1", time_start: entry.martes_inicio, time_end: entry.martes_fin});            
+          }
+          if (
+            entry.miercoles_inicio !== "" &&
+            entry.miercoles_fin !== ""
+          )
+          {
+            workcalendars.push({day: "2", time_start: entry.miercoles_inicio, time_end: entry.miercoles_fin});            
+          }
+          if (
+            entry.jueves_inicio !== "" &&
+            entry.jueves_fin !== ""
+          )
+          {
+            workcalendars.push({day: "3", time_start: entry.jueves_inicio, time_end: entry.jueves_fin});            
+          }
+          if (
+            entry.viernes_inicio !== "" &&
+            entry.viernes_fin !== ""
+          )
+          {
+            workcalendars.push({day: "4", time_start: entry.viernes_inicio, time_end: entry.viernes_fin});            
+          }
+          if (
+            entry.sabado_inicio !== "" &&
+            entry.sabado_fin !== ""
+          )
+          {
+            workcalendars.push({day: "5", time_start: entry.sabado_inicio, time_end: entry.sabado_fin});            
+          }
+          if (
+            entry.domingo_inicio !== "" &&
+            entry.domingo_fin !== ""
+          )
+          {
+            workcalendars.push({day: "6", time_start: entry.domingo_inicio, time_end: entry.domingo_fin});            
+          }  
+
+          overwriteData.workcalendars = workcalendars;
+          overwriteData.school = entry.escuela;
+        }
+
         /* TODO record update stats (especially admin no -> yes, deactivated x -> !x, ... */
         Object.assign(userRecord, entry);
         Object.assign(userRecord, overwriteData);
@@ -329,7 +424,23 @@ const FilePicker = props => {
             async alreadyExists => {
               if (LOGGING) console.log("ya existe");
 
-              if (useridMode === "update" || conflictMode === "skip") {
+              if (useridMode === "update") {
+                if (LOGGING)
+                console.log(
+                  "LISTO. para actualizar el registro " +
+                    recordData.id +
+                    " (" +
+                    recordData.displayname +
+                    ")."
+                );
+
+              if (!dryRun) {
+                await dataProvider.update("users", { data: recordData });
+              }
+              succeededRecords.push(recordData);
+                
+              }
+              else if (conflictMode === "skip") {
                 skippedRecords.push(recordData);
               } else if (conflictMode === "stop") {
                 throw new Error(

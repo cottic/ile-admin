@@ -1,3 +1,3 @@
-id,displayname,password,is_guest,admin,deactivated
-@juanaazarduy:matrix.codigoi.com.ar,Juana Azurduy,secretpassword,false,true,false
-,Eva Maria Duarte,,false,false,false
+id,displayname,password,is_guest,admin,deactivated,escuela,lunes_inicio,lunes_fin,martes_inicio,martes_fin,miercoles_inicio,miercoles_fin,jueves_inicio,jueves_fin,viernes_    inicio,viernes_fin,sabado_inicio,sabado_fin,domingo_inicio,domingo_fin
+@juanaazarduy:matrix.codigoi.com.ar,Juana Azurduy2,password,false,false,false,NUEVA,10,15,10,12,,,,,,,,,9,10
+,Eva Maria Duarte,,false,false,false,,,,,,,,,,,,,,,
