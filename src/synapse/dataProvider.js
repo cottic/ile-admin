@@ -168,7 +168,6 @@ const dataProvider = {
       name: name,
       guests: guests,
       deactivated: deactivated,
-      order_by: field,
       dir: getSearchOrder(order),
     };
     const homeserver = localStorage.getItem("base_url");

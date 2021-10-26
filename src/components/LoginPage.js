@@ -235,7 +235,7 @@ const LoginPage = ({ theme }) => {
           <div className={classes.main}>
             <Card className={classes.card}>
               <div className={classes.avatar}>
-                <img src="https://plan-enia.web.app/icons/Icon-192.png" alt="Enia" />
+                <img src="https://siilve.web.app/icons/Icon-192.png" alt="SIILVE" />
               </div>
               <div className={classes.hint}>
                 {translate("synapseadmin.auth.welcome")}
